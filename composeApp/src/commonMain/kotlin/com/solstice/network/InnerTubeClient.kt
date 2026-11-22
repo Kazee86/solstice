@@ -15,6 +15,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
@@ -34,14 +35,14 @@ class InnerTubeClient(
         val payload = buildJsonObject {
             put("context", buildJsonObject {
                 put("client", buildJsonObject {
-                    put("clientName", "WEB_REMIX")
-                    put("clientVersion", "1.20241014.01.00")
-                    put("hl", "en")
-                    put("gl", "US")
+                    put("clientName", JsonPrimitive("WEB_REMIX"))
+                    put("clientVersion", JsonPrimitive("1.20241014.01.00"))
+                    put("hl", JsonPrimitive("en"))
+                    put("gl", JsonPrimitive("US"))
                 })
             })
-            put("query", query)
-            put("params", "Eg-KAQwIABAAGAAgACgAMABqChAEEAMQCRAFEAo%3D") // Music filter
+            put("query", JsonPrimitive(query))
+            put("params", JsonPrimitive("Eg-KAQwIABAAGAAgACgAMABqChAEEAMQCRAFEAo%3D")) // Music filter
         }
 
         return try {
